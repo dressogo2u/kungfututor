@@ -1,0 +1,68 @@
+/* KungfuTutor base — tokens from the "Zenith Motion Lab" design system */
+:root {
+  --canvas: #F4F3EF;
+  --paper: #FFFFFF;
+  --soft: #F9F9FB;
+  --ink: #191D28;
+  --ink-2: #333A4D;
+  --muted: #60687E;
+  --hair: rgba(25, 29, 40, .12);
+  --hair-2: rgba(25, 29, 40, .08);
+  --red: #D92D20;
+  --red-dk: #B42318;
+  --jade: #059669;
+  --emerald: #10B981;
+  --f-head: 'Space Grotesk', 'Noto Sans TC', system-ui, sans-serif;
+  --f-body: 'Hanken Grotesk', 'Noto Sans TC', system-ui, sans-serif;
+  --f-zh: 'Noto Sans TC', 'Space Grotesk', system-ui, sans-serif;
+  --f-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --wrap: 1120px;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--canvas); color: var(--ink);
+  font-family: var(--f-body); font-size: 16px; line-height: 1.6;
+}
+:lang(zh) body, html[lang^="zh"] body { font-family: var(--f-zh); }
+a { color: inherit; }
+img, svg { max-width: 100%; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid rgba(217, 45, 32, .35); outline-offset: 2px; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 20px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- top bar ---------- */
+.kt-top { background: var(--paper); border-bottom: 1px solid var(--hair); position: sticky; top: 0; z-index: 20; }
+.kt-top .wrap { display: flex; align-items: center; gap: 22px; height: 60px; }
+.kt-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--f-head); font-weight: 700; letter-spacing: -.01em; font-size: 18px; white-space: nowrap; }
+.kt-logo b { display: grid; place-items: center; width: 32px; height: 32px; background: var(--red); color: #fff; border-radius: 4px; font-family: var(--f-zh); font-size: 17px; }
+.kt-logo span em { font-style: normal; color: var(--red); }
+.kt-nav { display: flex; gap: 4px; flex: 1; overflow-x: auto; scrollbar-width: none; }
+.kt-nav::-webkit-scrollbar { display: none; }
+.kt-nav a { text-decoration: none; font-size: 14px; font-weight: 600; color: var(--ink-2); padding: 6px 10px; border-radius: 4px; white-space: nowrap; }
+.kt-nav a:hover { background: var(--canvas); }
+.kt-nav a[aria-current="page"] { color: var(--red); }
+.kt-lang { display: flex; border: 1px solid var(--hair); border-radius: 999px; overflow: hidden; flex: none; }
+.kt-lang button { border: 0; background: none; padding: 5px 11px; font-size: 12px; font-weight: 700; cursor: pointer; font-family: var(--f-mono); }
+.kt-lang button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+
+/* ---------- ad slots (reserved space = no layout jump) ---------- */
+.ad-slot { position: relative; margin: 40px auto; background: var(--paper); border: 1px solid var(--hair-2); border-radius: 4px; min-height: 120px; display: grid; place-items: center; max-width: 970px; }
+.ad-slot::before { content: attr(data-label); position: absolute; top: 6px; left: 10px; font: 600 10px/1 var(--f-mono); letter-spacing: .12em; color: var(--muted); text-transform: uppercase; }
+.ad-slot .ad-ph { font: 500 12px var(--f-mono); color: #A3A8B6; }
+.ad-slot ins { display: block; width: 100%; }
+
+/* ---------- footer ---------- */
+.kt-foot { border-top: 2px solid var(--ink); margin-top: 64px; padding: 36px 0 48px; font-size: 13px; color: var(--muted); }
+.kt-foot .cols { display: flex; flex-wrap: wrap; gap: 28px; justify-content: space-between; }
+.kt-foot nav { display: flex; flex-wrap: wrap; gap: 16px; }
+.kt-foot nav a { color: var(--ink-2); text-decoration: none; font-weight: 600; }
+.kt-foot nav a:hover { color: var(--red); }
+.kt-foot p { max-width: 720px; margin: 14px 0 0; }
+
+@media (max-width: 640px) {
+  .kt-top .wrap { gap: 12px; padding: 0 16px; }
+  .kt-logo span { display: none; }
+  .wrap { padding: 0 16px; }
+}
